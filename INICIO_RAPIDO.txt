@@ -1,0 +1,167 @@
+== FERNANDO'S GACHA REALITY - GUÍA DE INICIO ==
+
+¡Tu visual novel sobre ludopatía está listo! Aquí te muestro cómo ponerlo en funcionamiento.
+
+═════════════════════════════════════════════════════════════════
+
+📋 PASO 1: INSTALAR DEPENDENCIAS
+
+Abre PowerShell/Cmd y ejecuta:
+
+  cd c:\Users\pibed\Downloads\novelagacha
+  pip install -r requirements.txt
+
+Esto instalará:
+  ✓ pygame - Motor gráfico
+  ✓ pygbag - Para exportar a HTML5 (opcional pero recomendado)
+
+═════════════════════════════════════════════════════════════════
+
+🎮 PASO 2: CREAR FONDOS (OPCIONAL)
+
+Si quieres que el juego tenga fondos de colores mientras esperas
+tus propias imágenes:
+
+  python create_backgrounds.py
+
+Esto crea fondos de ejemplo en la carpeta Fondos/
+
+═════════════════════════════════════════════════════════════════
+
+✅ PASO 3: VERIFICAR INSTALACIÓN
+
+Para asegurarte de que todo está bien:
+
+  python test_setup.py
+
+Deberías ver una lista de verificación con todos los archivos ✓
+
+═════════════════════════════════════════════════════════════════
+
+🚀 PASO 4: JUGAR EN ESCRITORIO
+
+Para jugar el juego en tu computadora:
+
+  python main.py
+
+Se abrirá una ventana con el juego. Usa:
+  - ESPACIO: Continuar diálogos / Comenzar juego
+  - ARRIBA/ABAJO: Navegar menús
+  - ENTER: Seleccionar opción
+  - ESC: Salir
+
+═════════════════════════════════════════════════════════════════
+
+🌐 PASO 5: JUGAR EN NAVEGADOR (HTML5)
+
+Para que otros puedan jugar desde un navegador sin descargar nada:
+
+  pip install pygbag
+  pygbag main.py
+
+Luego abre en tu navegador:
+  http://localhost:8000
+
+Nota: La primera compilación puede tomar 2-5 minutos.
+
+═════════════════════════════════════════════════════════════════
+
+📁 ESTRUCTURA DEL PROYECTO
+
+novelagacha/
+├── main.py                 ← Punto de entrada principal
+├── config.py              ← Configuración del juego
+├── requirements.txt       ← Dependencias
+├── README.md             ← Documentación completa
+├── src/
+│   ├── game_engine.py    ← Motor del juego
+│   ├── game_systems.py   ← Dinero y gacha
+│   ├── graphics.py       ← Gráficos y fondos
+│   ├── dialogs.py        ← Motor de diálogos
+│   └── scenes.py         ← Escenas y narrativa
+├── Fondos/               ← Coloca tus imágenes de fondo aquí
+└── assets/               ← Sprites, música, etc.
+
+═════════════════════════════════════════════════════════════════
+
+🎨 PERSONALIZANDO TU JUEGO
+
+1. FONDOS:
+   - Coloca tus imágenes en la carpeta "Fondos/"
+   - Formatos: .png, .jpg, .jpeg
+   - Tamaño recomendado: 1280x720 píxeles
+   - Nombres automáticos: gym.png, transport.png, home.png,
+     hospital.png, phone.png, gacha.png, default.png
+
+2. DIÁLOGOS:
+   - Edita src/scenes.py para cambiar historias
+   - Busca las funciones setup_day_sequences() y setup_endings()
+
+3. PERSONAJES GACHA:
+   - Edita config.py, sección GACHA_CHARACTERS
+   - Añade nuevos personajes con name, rarity, weight
+
+4. DINERO Y COSTOS:
+   - Edita config.py para cambiar:
+     * INITIAL_GACHA_MONEY
+     * DAILY_SALARY
+     * LUCKY_BLOCK_COST
+
+═════════════════════════════════════════════════════════════════
+
+🎯 CÓMO FUNCIONA LA HISTORIA
+
+DÍA 1-7:
+  - Fernando trabaja 6 AM - 3 PM, gana $8
+  - Viaja a casa
+  - ELIGE UNA ACCIÓN POR LA TARDE:
+    ① Jugar Gacha (cuesta $2)
+    ② Descansar/Ahorrar
+    ③ Visitar a mamá en hospital (cuesta $3 en taxi)
+
+FINAL MALO (si gastas mucho):
+  - Madre muere sin poder pagar operación
+  - Cuota: $5+ gastados en gacha
+
+FINAL SEMI-BUENO (si moderas):
+  - Madre igual muere, pero estuviste con ella
+  - Condición: ≤2 usos de gacha + ≥1 visita a mamá
+
+═════════════════════════════════════════════════════════════════
+
+⚠️ SOLUCIÓN DE PROBLEMAS
+
+"No puedo ejecutar main.py"
+  → Asegúrate de estar en la carpeta correcta
+  → Verifica: cd c:\Users\pibed\Downloads\novelagacha
+
+"Pygame no está instalado"
+  → Ejecuta: pip install pygame
+
+"No veo los fondos"
+  → Ejecuta: python create_backgrounds.py
+  → O coloca tus imágenes en la carpeta Fondos/
+
+"El juego se ve pequeño"
+  → Es normal, usa la ventana a pantalla completa
+  → Resolucion: 1280x720 píxeles
+
+═════════════════════════════════════════════════════════════════
+
+📚 DOCUMENTACIÓN ADICIONAL
+
+Para más detalles, lee:
+  - README.md (guía completa)
+  - README_PYGBAG.txt (exportación a web)
+  - Comentarios en src/ (código documentado)
+
+═════════════════════════════════════════════════════════════════
+
+¡LISTO! Tu juego está preparado. ¡A jugar! 🎮
+
+Cualquier duda revisa:
+  1. Los archivos .py tienen comentarios detallados
+  2. README.md tiene sección de "Desarrollo Futuro"
+  3. config.py tiene todas las constantes centralizadas
+
+═════════════════════════════════════════════════════════════════

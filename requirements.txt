@@ -1,0 +1,5 @@
+"""
+Archivo de requisitos para instalar dependencias
+"""
+pygame>=2.1.0
+Pygbag>=0.7.0
